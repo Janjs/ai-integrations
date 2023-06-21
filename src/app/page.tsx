@@ -7,6 +7,7 @@ import { AlertCircle, AlertTriangle, Loader2 } from "lucide-react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import ColorPaletteViewer from "@/components/ColorPaletteViewer";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,6 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
-    console.log("hi")
     setLoading(true);
     setError(null);
     setColors("");
@@ -56,7 +56,7 @@ export default function Home() {
           )}
         </div>
         <Separator className="my-5" />
-        {colors}
+        {colors && <ColorPaletteViewer colorPalette={colors} />}
         {error && (
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
