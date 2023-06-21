@@ -12,13 +12,14 @@ import ColorPaletteViewer from "@/components/ColorPaletteViewer";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState<string>("");
-  const [colors, setColors] = useState<string>("");
+  const [colors, setColors] = useState([]);
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
+
     setLoading(true);
     setError(null);
-    setColors("");
+    setColors([]);
 
     fetch("/api/generateChords", {
       method: "POST",
