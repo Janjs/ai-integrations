@@ -11,7 +11,7 @@ import ColorPaletteViewer from "@/components/ColorPaletteViewer";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const [description, setDescription] = useState<string>("");
+  const [prompt, setPrompt] = useState<string>("");
   const [colors, setColors] = useState([]);
   const [error, setError] = useState(null);
 
@@ -24,7 +24,7 @@ export default function Home() {
     fetch("/api/generateChords", {
       method: "POST",
       body: JSON.stringify({
-        description: description,
+        prompt: prompt,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   function handleChange(event: any) {
-    setDescription(event.target.value);
+    setPrompt(event.target.value);
   }
 
   return (

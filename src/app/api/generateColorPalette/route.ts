@@ -1,14 +1,12 @@
-import openai from "@/app/api/generateChords/openai";
+import openai from "@/app/api/generateColorPalette/openai";
 import { NextResponse } from "next/server";
 
-export interface GenerateChordsRequest {
-  description: string;
-  musicalKey: string;
-  musicalScale: string;
+export interface GenerateColorPaletteRequest {
+  prompt: string;
 }
 
 export async function POST(req: Request) {
-  const userInput: GenerateChordsRequest = await req.json();
+  const userInput: GenerateColorPaletteRequest = await req.json();
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
@@ -23,7 +21,7 @@ export async function POST(req: Request) {
       },
       {
         role: "user",
-        content: `Generate a color palette that fits the following description: ${userInput.description}}`,
+        content: `Generate a color palette that fits the following description: ${userInput.prompt}}`,
       },
     ],
   });
