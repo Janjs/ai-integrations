@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Header({ title }: { title: string }) {
   return (
     <header className="bg-transparent">
       <nav
@@ -6,7 +6,7 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex flex-1 justify-center text-center text-xl" >
-          <h1>Generate Color Palettes from Text</h1>
+          <h1>{title}</h1>
         </div>
       </nav>
     </header>
