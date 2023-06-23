@@ -9,7 +9,7 @@ import os
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = ""
 
 llm = OpenAI(temperature=0.1)
 
