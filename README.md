@@ -1,4 +1,4 @@
-## AI example Integration
+## AI Integration examples
 
 Color palette generator, powered by ChatGPT.
 
