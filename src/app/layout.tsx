@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Colorvibe",
+  title: "AI Integrations",
   description: "Color Palette AI Generator",
 };
 
