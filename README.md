@@ -2,7 +2,7 @@
 
 Color palette generator, powered by ChatGPT.
 
-Color palette generator, powered by ChatGPT.
+Logo customizer, powered by Replicate and ControlNet.
 
 Python script to train your own documents on an LLM.
 
