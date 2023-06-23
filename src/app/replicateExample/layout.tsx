@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Colorvibe",
-  description: "Color Palette AI Generator",
+  title: "AI Integrations",
+  description: "AI Integrations",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
