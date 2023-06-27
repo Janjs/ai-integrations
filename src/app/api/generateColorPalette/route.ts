@@ -9,25 +9,47 @@ export async function POST(req: Request) {
   const userInput: GenerateColorPaletteRequest = await req.json();
 
   const completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-0613",
     temperature: 0.8,
     n: 1,
     stream: false,
     messages: [
       {
         role: "system",
-        content: `You are a generator of color palette. 
-          The user give you a description that describes the vibe of a color palette. You will respond only with five colors in hex code divided by comas, nothing else. Don't add more text than the one I asked for`,
+        content: "You are a color palette generator",
       },
       {
         role: "user",
         content: `Generate a color palette that fits the following description: ${userInput.prompt}}`,
       },
     ],
+    functions: [
+      {
+        "name": "get_color_palette",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "colors"
+          ],
+          "properties": {
+            "colors": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Colors part of the color palette in hex code."
+            }
+          }
+        },
+      }
+    ],
   });
-  const response = completion.data.choices[0].message?.content
 
-  return NextResponse.json({ colors: toColors(response!!) });
+  const response = JSON.parse(completion.data.choices[0].message?.function_call.arguments)
+
+  console.log(response.colors)
+
+  return NextResponse.json({ colors: response.colors });
 }
 
 const toColors = (response: string): string[] => {
